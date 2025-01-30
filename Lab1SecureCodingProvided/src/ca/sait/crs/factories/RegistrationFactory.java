@@ -46,7 +46,13 @@ public class RegistrationFactory {
      */
     private boolean validateCourse(Course course) {
         // TODO: Add logic to test course is valid.
-        return true;
+        if (course == null || course.getCode() == null || course.getName() == null) {
+            return false;
+        }
+        // Assuming Course has methods getCode() and getName()
+        String codePattern = "[a-zA-Z]{4}-\\d{3}";
+        String namePattern = "^[a-zA-Z0-9 ]{5,100}$";
+        return course.getCode().matches(codePattern) && course.getName().matches(namePattern);
     }
 
     /**
@@ -56,6 +62,9 @@ public class RegistrationFactory {
      */
     private boolean validateStudent(Student student) {
         // TODO: Add logic to test student is valid.
+        if (student == null) {
+            return false;
+        }
         return true;
     }
 }

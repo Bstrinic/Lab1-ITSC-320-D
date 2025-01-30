@@ -1,8 +1,10 @@
 package ca.sait.crs.services;
 
 import ca.sait.crs.contracts.Course;
+import ca.sait.crs.factories.CourseFactory;
 import ca.sait.crs.models.OptionalCourse;
 import ca.sait.crs.models.RequiredCourse;
+import ca.sait.crs.exceptions.CannotCreateCourseException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -69,6 +71,7 @@ public class CourseService {
         Scanner scanner = new Scanner(file);
 
         // TODO: Create instance of CourseFactory
+        CourseFactory courseFactory = new CourseFactory();
 
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
@@ -85,6 +88,13 @@ public class CourseService {
 
             // TODO: Call build() method in CourseFactory instance to handle validating parameters and creating new Course object.
             // TODO: Catch and handle CannotCreateCourseException.
+
+            try {
+                courseFactory.build(code, name, credits);
+            } catch (CannotCreateCourseException e) {
+                e.printStackTrace();
+                System.err.println("Course could not be created.");
+            }
 
             Course course;
 
