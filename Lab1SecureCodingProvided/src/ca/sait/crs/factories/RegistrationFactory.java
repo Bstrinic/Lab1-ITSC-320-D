@@ -49,9 +49,8 @@ public class RegistrationFactory {
         if (course == null || course.getCode() == null || course.getName() == null) {
             return false;
         }
-        // Assuming Course has methods getCode() and getName()
-        String codePattern = "[a-zA-Z]{4}-\\d{3}";
-        String namePattern = "^[a-zA-Z0-9 ]{5,100}$";
+        String codePattern = "[A-Z]{4}-\\d{3}";
+        String namePattern = "[a-zA-Z0-9 ]{5,100}";
         return course.getCode().matches(codePattern) && course.getName().matches(namePattern);
     }
 
@@ -62,7 +61,7 @@ public class RegistrationFactory {
      */
     private boolean validateStudent(Student student) {
         // TODO: Add logic to test student is valid.
-        if (student == null) {
+        if (student == null || student.getName() == null || student.getGpa() < 0 || student.getGpa() > 4) {
             return false;
         }
         return true;

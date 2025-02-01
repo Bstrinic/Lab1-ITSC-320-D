@@ -18,16 +18,16 @@ import java.util.Scanner;
  * @author Nick Hamnett <nick.hamnett@sait.ca>
  * @since June 1, 2023
  */
-public class CourseService {
+public final class CourseService {
     /**
      * Path to courses.csv file.
      */
-    public static final String COURSES_CSV = "res/courses.csv";
+    private static final String COURSES_CSV = "res/courses.csv";
 
     /**
      * Holds Course instances.
      */
-    private ArrayList<Course> courses;
+    private final ArrayList<Course> courses;
 
     /**
      * Initializes CourseService instance

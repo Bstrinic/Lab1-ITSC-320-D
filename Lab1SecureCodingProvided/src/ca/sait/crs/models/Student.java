@@ -7,16 +7,16 @@ package ca.sait.crs.models;
  * @author Nick Hamnett <nick.hamnett@sait.ca>
  * @since June 1, 2023
  */
-public class Student implements ca.sait.crs.contracts.Student {
+public final class Student implements ca.sait.crs.contracts.Student {
     /**
      * Name of student
      */
-    private String name;
+    private final String name;
 
     /**
      * Students GPA (between 0.00 and 4.00)
      */
-    private double gpa;
+    private final double gpa;
 
     /**
      * Initializes instance.
@@ -24,8 +24,8 @@ public class Student implements ca.sait.crs.contracts.Student {
      * @param gpa Student's GPA
      */
     public Student(String name, double gpa) {
-        this.setName(name);
-        this.setGpa(gpa);
+        this.name = name;
+        this.gpa = gpa;
     }
 
     /**
@@ -42,22 +42,6 @@ public class Student implements ca.sait.crs.contracts.Student {
      */
     public double getGpa() {
         return gpa;
-    }
-
-    /**
-     * Sets the students name.
-     * @param name Name
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
-     * Sets the students GPA
-     * @param gpa GPA
-     */
-    public void setGpa(double gpa) {
-        this.gpa = gpa;
     }
 
     /**

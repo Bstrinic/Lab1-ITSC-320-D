@@ -13,7 +13,7 @@ import java.util.ArrayList;
 // TODO: Check student can be registered before passing to RealRegistrationService
 // TODO: Make this class immutable.
 
-public class ProxyRegistrationService implements RegistrationService {
+public final class ProxyRegistrationService implements RegistrationService {
     private final RegistrationService realRegistrationService;
 
     public ProxyRegistrationService(RegistrationService realRegistrationService) {
@@ -22,8 +22,12 @@ public class ProxyRegistrationService implements RegistrationService {
 
     @Override
     public Registration register(Student student, Course course) throws CannotCreateRegistrationException {
-        if (student == null || course == null) {
-            throw new CannotCreateRegistrationException("Student or course is null.");
+        if (student == null) {
+            throw new CannotCreateRegistrationException("Invalid student name.");
+        }
+
+        if (course == null) {
+            throw new CannotCreateRegistrationException("Invalid course code.");
         }
 
         if (student.getGpa() < 2.0) {

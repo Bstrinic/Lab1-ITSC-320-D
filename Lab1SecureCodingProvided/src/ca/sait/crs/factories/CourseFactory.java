@@ -51,10 +51,8 @@ public class CourseFactory {
      */
     private boolean validateCode(String code) {
         // TODO: Add logic to test code is valid.
-        String regex = "[A-Z]{4}-\\d{3}";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(code);
-        return matcher.matches();
+        String codePattern = "[A-Z]{4}-\\d{3}";
+        return code.matches(codePattern);
     }
 
     /**

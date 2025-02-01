@@ -11,15 +11,15 @@ import ca.sait.crs.exceptions.CannotCreateRegistrationException;
  * @author Nick Hamnett <nick.hamnett@sait.ca>
  * @since June 1, 2023
  */
-public class Registration implements ca.sait.crs.contracts.Registration {
+public final class Registration implements ca.sait.crs.contracts.Registration {
     /**
      * Associated course
      */
-    private Course course;
+    private final Course course;
     /**
      * Associated student
      */
-    private Student student;
+    private final Student student;
 
     /**
      * Initializes instance.
@@ -27,8 +27,8 @@ public class Registration implements ca.sait.crs.contracts.Registration {
      * @param student Student instance
      */
     public Registration(Course course, Student student) {
-        this.setCourse(course);
-        this.setStudent(student);
+        this.course = course;
+        this.student = student;
     }
 
     /**
@@ -47,21 +47,5 @@ public class Registration implements ca.sait.crs.contracts.Registration {
     @Override
     public Student getStudent() {
         return student;
-    }
-
-    /**
-     * Sets the course
-     * @param course Course
-     */
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
-    /**
-     * Sets the student
-     * @param student Student
-     */
-    public void setStudent(Student student) {
-        this.student = student;
     }
 }

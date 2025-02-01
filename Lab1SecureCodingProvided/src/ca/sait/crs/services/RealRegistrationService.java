@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author Nick Hamnett <nick.hamnett@sait.ca>
  * @since June 1, 2023
  */
-public class RealRegistrationService implements RegistrationService {
-    private ArrayList<Registration> registrations;
+public final class RealRegistrationService implements RegistrationService {
+    private final ArrayList<Registration> registrations;
 
     public RealRegistrationService() {
         this.registrations = new ArrayList<>();
@@ -34,7 +34,7 @@ public class RealRegistrationService implements RegistrationService {
         // Do not catch CannotCreateRegistrationException in this method.
 
         RegistrationFactory registrationFactory = new RegistrationFactory();
-
+        registrationFactory.build(course, student);
         
         Registration registration = new ca.sait.crs.models.Registration(course, student);
 

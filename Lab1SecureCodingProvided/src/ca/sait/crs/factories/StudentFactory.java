@@ -36,12 +36,11 @@ public class StudentFactory {
      */
     private boolean validateName(String name) {
         // TODO: Add logic to test name is valid.
-    	for (int i = 0; i <= name.length()-1; i++) {
-    		if (!Character.isLetter(name.charAt(i))) {
-    			return false;
-    		}
-    	}
-    	return true;  
+        if (name == null) {
+            return false;
+        }
+        String namePattern = "[a-zA-Z ]{1,100}";
+        return name.matches(namePattern);
     }
 
     /**
